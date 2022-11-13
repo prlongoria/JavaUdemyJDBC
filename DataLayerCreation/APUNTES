@@ -1,0 +1,25 @@
+CAPA DE PRESENTACIÓN:sus patrones de diseño pueden ser:PROCESA PETICIONES DEL USUARIO
+- MVC
+- Front Controller: permite porporcionar una entrada única a mi app cuando el usuario hace una petición
+- DTO: representa un objeto del domino del problema, puede ser una clase de entidad (que se guarda en una bbdd). Se
+utiliza para transferir una entidad o lista de entidades de cierto tipo entre las distintas capas de la app, por ejemplo
+ un usuario que solicita un listado de personas, entonces la capa de presentación procesa la petición y solicita a la
+ capa de servicio que ejecute el método read, entonces la capa servicio accede a la capa datos para recuperar ese
+ listado y entonces regresar un listado de objetos de persona usando los objetos DTO(que es un objeto de tipo persona)
+ hasta dar la respuesta al usuario con ese listado que solicitó e la capa de presentación
+etc
+
+CAPA NEGOCIO: EJECUTA LOS MÉTODOS DEL CRUD Y SOLICITA A LA CAPA DATOS LA INFORMACIÓN PARA ENVIARLOS A LA CAPA PRESENTACIÓN EJECUTANDO LOS MÉTODOS
+- Business Delegate: se encarga de llamar al algún método de servicio
+- Service Locator: lo utiliza el busness delegate para localizar los servicios si están en algún directorio de servicios
+- DTO:
+etc
+
+CAPA DATOS:RECIBE PETICIÓN DE CAPA NEGOCIO Y SOLICITA LOS DATOS A LA BBDD PARA MANDÁRSELOS A LA CAPA NEGOCIO
+- DAO: extrae y almacena información en la ddbb
+- DTO
+etc
+
+AL UTILIZAR EL PATRÓN DAO, debo usar una interface que es la que van a utilizar el resto de paquetes de la aplicación
+y así puedo usar cualquier tecnología, ya que la interface es independiente de la tecnología, y la implementación de
+esta es la dependiente de la tecnología, en este caso JDBC
